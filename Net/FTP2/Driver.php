@@ -16,8 +16,15 @@
 //
 // $Id$
 
+// {{{ Error constants
+
+/**
+ * Error code for a not implemented, abstract method.
+ */
 define('NET_FTP2_ERROR_METHODENOTIMPLEMENTED_CODE', -1);
 define('NET_FTP2_ERROR_METHODENOTIMPLEMENTED_TEXT', 'This method is not implemented, yet.');
+
+// }}}
 
 
 /**
@@ -33,6 +40,10 @@ define('NET_FTP2_ERROR_METHODENOTIMPLEMENTED_TEXT', 'This method is not implemen
  * @license   http://www.php.net/license/3_0.txt  PHP License 3.0
  */
 class Net_FTP2_Driver  {
+
+
+    // }}}
+    // {{{ $_connectionSettings
 
     /**
      * Connection settings 
@@ -50,6 +61,10 @@ class Net_FTP2_Driver  {
         'port'      => 21,
         'dir'       => '/',
     );
+
+
+    // }}}
+    // {{{ $_options
 
     /**
      * Options 
@@ -87,27 +102,35 @@ class Net_FTP2_Driver  {
     }
 
     // }}}
-    // {{{ _parseURI()
-
-    /**
-     * Parse an FTP URI into it's parts' 
-     *  
-     * @since
-     * @access priotected
-     * @param string $uri The URI to parse
-     * @return array The parsed URI
-     */
-    function _parseURI($uri)
-    {
-
-
-    }
-
+    
     ////////////////////////////////////////////////////////////////
     // ABSTRACT METHODS, TO BE IMPLEMENTED BY THE DRIVER CLASSES! //
     ////////////////////////////////////////////////////////////////
 
+    // {{{ checkDependencies()
+
+    /**
+     * Check if drivers dependencies are fulfilled.
+     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
+     *  
+     * @since 0.1
+     * @access public
+     * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
+     * @param  
+     * @return bool True if dependencies are fulfilled, otherwise false.
+     */
+    function checkDependencies($optional = false)
+    {
+        return PEAR::raiseError(NET_FTP2_ERROR_METHODENOTIMPLEMENTED_CODE, NET_FTP2_ERROR_METHODENOTIMPLEMENTED_CODE);
+    }
+
     // }}}
+
+    ////////////////////////////////////////////////////////////////
+    // ABSTRACT METHODS DEFINED BY extFTP.                        //
+    ////////////////////////////////////////////////////////////////
+
     // {{{ ftp_alloc()
 
     /**
@@ -215,9 +238,9 @@ class Net_FTP2_Driver  {
      * @param int $port The port to connect to.
      * @param int $timeout Timeout for the connection to be opened.
      * @access public
-     * @return boolean True on success, otherwise false.
+     * @return mixed The FTP resource on success, otherwise false.
      */
-    function ftp_connect($host, $port = 21, $timeout = 90)
+    function &ftp_connect($host, $port = 21, $timeout = 90)
     {
         return PEAR::raiseError(NET_FTP2_ERROR_METHODENOTIMPLEMENTED_CODE, NET_FTP2_ERROR_METHODENOTIMPLEMENTED_CODE);
     }
@@ -697,9 +720,9 @@ class Net_FTP2_Driver  {
      * @param string $host The host to connect to.
      * @param int $port The port to connect to.
      * @param int $timeout Timeout for the connection to be opened.
-     * @return int Size of the file in byte, -1 on error.
+     * @return mixed The FTP resource, false on error.
      */
-    function ftp_ssl_connect($host, $port = 21, $timeout = 90)
+    function &ftp_ssl_connect($host, $port = 21, $timeout = 90)
     {
         return PEAR::raiseError(NET_FTP2_ERROR_METHODENOTIMPLEMENTED_CODE, NET_FTP2_ERROR_METHODENOTIMPLEMENTED_CODE);
     }
@@ -721,6 +744,8 @@ class Net_FTP2_Driver  {
     {
         return PEAR::raiseError(NET_FTP2_ERROR_METHODENOTIMPLEMENTED_CODE, NET_FTP2_ERROR_METHODENOTIMPLEMENTED_CODE);
     }
+
+    // }}}
 }
 
 
