@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0">
+  <name>Net_FTP2</name>
+  <summary>Net_FTP2 provides multiple backends and advanced features for communication with FTP servers.</summary>
+  <description>[[[DESCRIBTION TO BE ADDED HERE]]]</description>
+  <maintainers>
+    <maintainer>
+      <user>toby</user>
+      <name>Tobias Schlitt</name>
+      <email>toby@php.net</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.1</version>
+    <date>2005-01-07</date>
+    <license>PHP License</license>
+    <state>devel</state>
+    <deps>
+      <dep type="ext" rel="has" optional="no">ftp</dep>
+    </deps>
+    <provides type="class" name="Net_FTP2" />
+    <provides type="function" name="Net_FTP2::connect" />
+    <filelist>
+      <file role="data" baseinstalldir="" md5sum="57b8d745384127342f95660d97e1c9c2" name="CVS/Entries"/>
+      <file role="data" baseinstalldir="" md5sum="248dbd3f0deadc5615c73a6ee41bc440" name="CVS/Repository"/>
+      <file role="data" baseinstalldir="" md5sum="3d8ca296ef80be6b9e35696d9b58a679" name="CVS/Root"/>
+      <file role="php" baseinstalldir="" md5sum="d2e2714598ac4b71c9dcc7ea5ce34e3c" name="Net/Net_FTP2.php"/>
+    </filelist>
+  </release>
+  <changelog>
+    <release>
+      <version>0.1</version>
+      <date>2005-01-07</date>
+      <license>PHP License</license>
+      <state>devel</state>
+    </release>
+  </changelog>
+</package>
