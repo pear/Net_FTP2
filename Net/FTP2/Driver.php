@@ -115,6 +115,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @param int $filesize
@@ -151,6 +152,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @param string $directory
@@ -169,6 +171,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @param int $mode
@@ -188,6 +191,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @return boolean True on success, otherwise false.
@@ -205,6 +209,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $host The host to connect to.
      * @param int $port The port to connect to.
@@ -225,6 +230,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $path The path for the file to delete.
      * @access public
@@ -243,6 +249,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $command The command to execute.
      * @access public
@@ -261,6 +268,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param resource $handle Local file handler to write to.
      * @param string $remote_file Path to the remote file to download.
@@ -282,6 +290,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $remote_file Path to the remote file to upload to.
      * @param resource $handle Local file handler to upload.
@@ -303,6 +312,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $local Local file path to write to.
      * @param string $remote_file Path to the remote file to download.
@@ -324,6 +334,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $remote_file Path to the remote file to upload to.
      * @param string $local_file Local file to upload.
@@ -345,6 +356,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $username The username.
      * @param string $password The password.
@@ -364,6 +376,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $remote_file Path to the remote file.
      * @access public
@@ -382,6 +395,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $directory Path for the directory to create.
      * @access public
@@ -400,6 +414,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @return int Returns FTP_FAILED or FTP_FINISHED  or FTP_MOREDATA.
@@ -417,6 +432,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @param resource $handle Local file handler to write to.
@@ -439,6 +455,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $remote_file Path to the remote file to upload to.
      * @param string $local_file Local file to upload.
@@ -460,6 +477,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $local_file Local file path to write to.
      * @param string $remote_file Path to the remote file to download.
@@ -481,6 +499,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $remote_file Path to the remote file to upload to.
      * @param resource $local_file Local file to upload.
@@ -502,6 +521,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param string $directory The directory to list files from.
      * @access public
@@ -520,6 +540,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @param bool $pasv True to turn on pasv mode, false to turn off.
      * @access public
@@ -538,6 +559,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @return mixed String the current directory or false on error.
@@ -555,6 +577,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which must not be implemented by a driver since it's an alias to ftp_close('..').
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @return bool True on success, otherwise false.
@@ -572,6 +595,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @param string $directory The directory to list files from.
@@ -590,6 +614,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @param string $from The file to rename.
@@ -609,6 +634,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @param string $directory The directory to remove.
@@ -627,6 +653,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @param string $cmd The command to send.
@@ -645,6 +672,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @param string $remote_file File to determine the size of.
@@ -663,6 +691,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @param string $host The host to connect to.
@@ -683,6 +712,7 @@ class Net_FTP2_Driver  {
      * This is one of the functions provided by extFTP, which should be implemented by a driver. 
      * 
      * @abstract
+	 * @throws PEAR_Error(NET_FTP2_ERROR_METHODNOTIMPLEMENTED_CODE) 
      * @since 0.1
      * @access public
      * @return mixed String, the remote system type, or false on error.
