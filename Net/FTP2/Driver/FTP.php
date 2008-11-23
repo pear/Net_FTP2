@@ -82,13 +82,12 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver
     /**
      * Check if drivers dependencies are fulfilled.
      *
-     * @param bool $optional Check optional dependencies?
      *
      * @since 0.1
      * @access public
      * @return bool True if dependencies are fulfilled, otherwise false.
      */
-    function checkDependencies($optional = false)
+    function checkDependencies()
     {
         return (extension_loaded('ftp') || dl('ftp'));
     }
