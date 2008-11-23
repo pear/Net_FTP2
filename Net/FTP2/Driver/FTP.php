@@ -16,14 +16,14 @@
  * the PHP License and are unable to obtain it through the web, please
  * send a note to license@php.net so we can mail you a copy immediately.
  *
- * @category   Networking
- * @package    FTP2
- * @author     Tobias Schlitt <toby@php.net>
- * @copyright  1997-2005 The PHP Group
- * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Net_FTP2
- * @since      File available since Release 0.0.1
+ * @category  Networking
+ * @package   FTP2
+ * @author    Tobias Schlitt <toby@php.net>
+ * @copyright 1997-2005 The PHP Group
+ * @license   http://www.php.net/license/3_0.txt  PHP License 3.0
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Net_FTP2
+ * @since     File available since Release 0.0.1
  */
 
 require_once 'Net/FTP2/Driver.php';
@@ -32,23 +32,24 @@ require_once 'Net/FTP2/Driver.php';
  * Net_FTP2 driver class for use of extFTP.
  * This class wraps the extFTP functions into a class for use with Net_FTP2.
  *
- * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @category   Networking
- * @package    FTP
- * @author     Tobias Schlitt <toby@php.net>
- * @copyright  1997-2005 The PHP Group
- * @version    Release: @package_version@
- * @link       http://pear.php.net/package/Net_FTP
- * @since      0.0.1
- * @access     public
+ * @category  Networking
+ * @package   FTP
+ * @author    Tobias Schlitt <toby@php.net>
+ * @copyright 1997-2005 The PHP Group
+ * @license   http://www.php.net/license/3_0.txt  PHP License 3.0
+ * @version   Release: @package_version@
+ * @link      http://pear.php.net/package/Net_FTP
+ * @since     0.0.1
+ * @access    public
  */
-class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
+class Net_FTP2_Driver_FTP extends Net_FTP2_Driver
+{
 
-    // {{{ $_resource 
+    // {{{ $_resource
 
     /**
      * The FTP resource.
-     *  
+     *
      * @var resource
      * @access private
      * @since 0.1
@@ -59,19 +60,20 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
     // {{{ Net_FTP2_Driver_FTP()
 
     /**
-     * Constructor 
+     * Constructor
      * This is the constructor for Net_FTP2_Driver_FTP.
-     *  
+     *
+     * @param string $uri     A URI to describe the the FTP connection in the format
+     *                        <protocol>://[<username>][:<password>][@]<host>[:<port>][/<directory]
+     * @param array  $options An array of further options for the FTP connection.
+     *
      * @since 0.1
      * @access public
-     * @param string $uri       A URI to describe the the FTP connection in the format
-     *                          <protocol>://[<username>][:<password>][@]<host>[:<port>][/<directory]
-     * @param array  $options   An array of further options for the FTP connection.
      * @return @void
      */
     function Net_FTP2_Driver_FTP($uri, $options)
     {
-       $this->Net_FTP_Driver($uri, $options);
+        $this->Net_FTP_Driver($uri, $options);
     }
 
     // }}}
@@ -79,10 +81,11 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Check if drivers dependencies are fulfilled.
-     *  
+     *
+     * @param bool $optional Check optional dependencies?
+     *
      * @since 0.1
      * @access public
-     * @param  
      * @return bool True if dependencies are fulfilled, otherwise false.
      */
     function checkDependencies($optional = false)
@@ -95,11 +98,14 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Sends an ALLO command to the remote FTP server to allocate filesize  bytes of space. Returns TRUE on success, or FALSE on failure.
-     * 
+     *
+     * @param int    $filesize The number of bytes to allocate
+     * @param string $result   A textual representation of the servers response
+     *                         will be returned by reference in result
+     *                         if a variable is provided.
+     *
      * @since 0.1
      * @access public
-     * @param int $filesize
-     * @param string $result
      * @return @boolean True on success, otherwise false.
      */
     function ftp_alloc($filesize, $result = '')
@@ -109,30 +115,30 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     // }}}
     // {{{ ftp_cdup()
-    
+
     /**
      * Changes to the parent directory
-     *  
+     *
      * @since 0.1
      * @access public
-     * @param  
      * @return @bool
      */
     function ftp_cdup()
     {
         return @$this->ftp_chdir('..');
     }
-    
+
     // }}}
     // {{{ ftp_chdir()
-    
+
     /**
      * Changes directories on a FTP server
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
+     *
+     * @param string $directory The target directory
+     *
      * @since 0.1
      * @access public
-     * @param string $directory
      * @return @boolean True on success, otherwise false.
      */
     function ftp_chdir($directory)
@@ -145,25 +151,26 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Set permissions on a file via FTP
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
+     *
+     * @param int    $mode     The new permissions, given as an octal value.
+     * @param string $filename The remote file.
+     *
      * @since 0.1
      * @access public
-     * @param int $mode
-     * @param string $filename
      * @return @boolean True on success, otherwise false.
      */
     function ftp_chmod($mode, $filename)
     {
         return @ftp_chmod($this->_resource, $mode, $filename);
     }
-    
+
     // }}}
     // {{{ ftp_close()
-    
+
     /**
      * Closes an FTP connection
-     * 
+     *
      * @since 0.1
      * @access public
      * @return @boolean True on success, otherwise false.
@@ -172,18 +179,19 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
     {
         return @ftp_close($this->_resource);
     }
-    
+
     // }}}
     // {{{ ftp_connect()
-    
+
     /**
      * Opens an FTP connection
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
+     *
+     * @param string $host    The host to connect to.
+     * @param int    $port    The port to connect to.
+     * @param int    $timeout Timeout for the connection to be opened.
+     *
      * @since 0.1
-     * @param string $host The host to connect to.
-     * @param int $port The port to connect to.
-     * @param int $timeout Timeout for the connection to be opened.
      * @access public
      * @return @boolean True on success, otherwise false.
      */
@@ -192,15 +200,16 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
         $this->_resource = ftp_connect($this->_resource, $host, $port, $timeout);
         return @$this->_resource;
     }
-   
+
     // }}}
     // {{{ ftp_delete()
-   
+
     /**
      * Deletes a file on the FTP server
-     * 
-     * @since 0.1
+     *
      * @param string $path The path for the file to delete.
+     *
+     * @since 0.1
      * @access public
      * @return @boolean True on success, otherwise false.
      */
@@ -208,15 +217,16 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
     {
         return @ftp_delete($this->_resource, $path);
     }
-    
+
     // }}}
     // {{{ ftp_exec()
-    
+
     /**
      * Requests execution of a program on the FTP server
-     * 
-     * @since 0.1
+     *
      * @param string $command The command to execute.
+     *
+     * @since 0.1
      * @access public
      * @return @boolean True on success, otherwise false.
      */
@@ -230,12 +240,13 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Downloads a file from the FTP server and saves to an open file.
-     * 
+     *
+     * @param resource $handle      Local file handler to write to.
+     * @param string   $remote_file Path to the remote file to download.
+     * @param int      $mode        Mode to download the file (FTP_ASCII or FTP_BINARY).
+     * @param int      $resumepos   Position to resume the download (@since PHP 4.3.0).
+     *
      * @since 0.1
-     * @param resource $handle Local file handler to write to.
-     * @param string $remote_file Path to the remote file to download.
-     * @param int $mode Mode to download the file (FTP_ASCII or FTP_BINARY).
-     * @param int $resumepos Position to resume the download (@since PHP 4.3.0).
      * @access public
      * @return @boolean True on success, otherwise false.
      */
@@ -243,21 +254,20 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
     {
         return @ftp_fget($this->_resource, $handle, $remote_file, $mode, @$resumepos);
     }
-    
+
     // }}}
     // {{{ ftp_fput()
-    
+
     /**
      * Uploads from an open file to the FTP server.
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
+     * @param string   $remote_file Path to the remote file to upload to.
+     * @param resource $handle      Local file handler to upload.
+     * @param int      $mode        Mode to download the file (FTP_ASCII or FTP_BINARY).
+     * @param int      $startpos    Position to resume the upload (@since PHP 4.3.0).
+     *
      * @since 0.1
-     * @param string $remote_file Path to the remote file to upload to.
-     * @param resource $handle Local file handler to upload.
-     * @param int $mode Mode to download the file (FTP_ASCII or FTP_BINARY).
-     * @param int $resumepos Position to resume the upload (@since PHP 4.3.0).
      * @access public
      * @return @boolean True on success, otherwise false.
      */
@@ -265,21 +275,20 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
     {
         return @ftp_fput($this->_resource, $remote_file, $handle, $mode, @$startpos);
     }
-    
+
     // }}}
     // {{{ ftp_get()
-    
+
     /**
      * Downloads a file from the FTP server
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
-     * @since 0.1
-     * @param string $local Local file path to write to.
+     * @param string $local_file  Local file path to write to.
      * @param string $remote_file Path to the remote file to download.
-     * @param int $mode Mode to download the file (FTP_ASCII or FTP_BINARY).
-     * @param int $resumepos Position to resume the download (@since PHP 4.3.0).
+     * @param int    $mode        Mode to download the file (FTP_ASCII or FTP_BINARY).
+     * @param int    $resumepos   Position to resume the download (@since PHP 4.3.0).
+     *
+     * @since 0.1
      * @access public
      * @return @boolean True on success, otherwise false.
      */
@@ -287,27 +296,26 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
     {
         return @ftp_get($this->_resource, $local_file, $remote_file, $mode, @$resumepos);
     }
-    
+
     // }}}
     // {{{ ftp_fput()
-    
+
     /**
      * Uploads a file to the FTP server
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
-     * @since 0.1
      * @param string $remote_file Path to the remote file to upload to.
-     * @param string $local_file Local file to upload.
-     * @param int $mode Mode to download the file (FTP_ASCII or FTP_BINARY).
-     * @param int $resumepos Position to resume the upload (@since PHP 4.3.0).
+     * @param string $local_file  Local file to upload.
+     * @param int    $mode        Mode to download the file (FTP_ASCII or FTP_BINARY).
+     * @param int    $startpos    Position to resume the upload (@since PHP 4.3.0).
+     *
+     * @since 0.1
      * @access public
      * @return @boolean True on success, otherwise false.
      */
-    function ftp_put($remote_file, $handle, $mode, $startpos = null)
+    function ftp_put($remote_file, $local_file, $mode, $startpos = null)
     {
-        return @ftp_put($this->_resource, $remote_file, $handle, $mode, @$startpos);
+        return @ftp_put($this->_resource, $remote_file, $local_file, $mode, @$startpos);
     }
 
     // }}}
@@ -315,13 +323,12 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Logs in to an FTP connection
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
-     * @since 0.1
      * @param string $username The username.
      * @param string $password The password.
+     *
+     * @since 0.1
      * @access public
      * @return @boolean True on success, otherwise false.
      */
@@ -335,12 +342,11 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Returns the last modified time of the given file
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
-     * @since 0.1
      * @param string $remote_file Path to the remote file.
+     *
+     * @since 0.1
      * @access public
      * @return @int Timestamp on success, otherwise -1.
      */
@@ -348,18 +354,17 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
     {
         return @ftp_mdtm($this->_resource, $remote_file);
     }
-    
+
     // }}}
     // {{{ ftp_mkdir()
-    
+
     /**
      * Creates a directory
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
-     * @since 0.1
      * @param string $directory Path for the directory to create.
+     *
+     * @since 0.1
      * @access public
      * @return @mixed Name of the new directory on success, otherwise false.
      */
@@ -373,10 +378,8 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Continues retrieving/sending a file (non-blocking)
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
      * @since 0.1
      * @access public
      * @return @int Returns FTP_FAILED or FTP_FINISHED  or FTP_MOREDATA.
@@ -391,16 +394,15 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Retrieves a file from the FTP server and writes it to an open file (non-blocking).
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
+     * @param resource $handle      Local file handler to write to.
+     * @param string   $remote_file Path to the remote file to download.
+     * @param int      $mode        Mode to download the file (FTP_ASCII or FTP_BINARY).
+     * @param int      $resumepos   Position to resume the download (@since PHP 4.3.0).
+     *
      * @since 0.1
      * @access public
-     * @param resource $handle Local file handler to write to.
-     * @param string $remote_file Path to the remote file to download.
-     * @param int $mode Mode to download the file (FTP_ASCII or FTP_BINARY).
-     * @param int $resumepos Position to resume the download (@since PHP 4.3.0).
      * @access public
      * @return @boolean True on success, otherwise false.
      */
@@ -414,15 +416,14 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Retrieves a file from the FTP server and writes it to an open file (non-blocking)
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
+     * @param string   $remote_file Path to the remote file to upload to.
+     * @param resource $handle      Local file to upload.
+     * @param int      $mode        Mode to download the file (FTP_ASCII or FTP_BINARY).
+     * @param int      $startpos    Position to resume the upload (@since PHP 4.3.0).
+     *
      * @since 0.1
-     * @param string $remote_file Path to the remote file to upload to.
-     * @param string $local_file Local file to upload.
-     * @param int $mode Mode to download the file (FTP_ASCII or FTP_BINARY).
-     * @param int $resumepos Position to resume the upload (@since PHP 4.3.0).
      * @access public
      * @return @boolean True on success, otherwise false.
      */
@@ -435,16 +436,14 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
     // {{{ ftp_nb_get()
 
     /**
-     * 
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
-     * @since 0.1
-     * @param string $local_file Local file path to write to.
+     * @param string $local_file  Local file path to write to.
      * @param string $remote_file Path to the remote file to download.
-     * @param int $mode Mode to download the file (FTP_ASCII or FTP_BINARY).
-     * @param int $resumepos Position to resume the download (@since PHP 4.3.0).
+     * @param int    $mode        Mode to download the file (FTP_ASCII or FTP_BINARY).
+     * @param int    $resumepos   Position to resume the download (@since PHP 4.3.0).
+     *
+     * @since 0.1
      * @access public
      * @return @boolean True on success, otherwise false.
      */
@@ -452,21 +451,20 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
     {
         return @ftp_nb_get($this->_resource, $local_file, $remote_file, $mode, @$resumepos);
     }
-    
+
     // }}}
     // {{{ ftp_nb_put()
-    
+
     /**
      * Stores a file on the FTP server (non-blocking).
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
+     * @param string   $remote_file Path to the remote file to upload to.
+     * @param resource $local_file  Local file to upload.
+     * @param int      $mode        Mode to download the file (FTP_ASCII or FTP_BINARY).
+     * @param int      $startpos    Position to resume the upload (@since PHP 4.3.0).
+     *
      * @since 0.1
-     * @param string $remote_file Path to the remote file to upload to.
-     * @param resource $local_file Local file to upload.
-     * @param int $mode Mode to download the file (FTP_ASCII or FTP_BINARY).
-     * @param int $resumepos Position to resume the upload (@since PHP 4.3.0).
      * @access public
      * @return @boolean True on success, otherwise false.
      */
@@ -480,18 +478,17 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Stores a file on the FTP server (non-blocking).
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
-     * @since 0.1
      * @param string $directory The directory to list files from.
+     *
+     * @since 0.1
      * @access public
      * @return @mixed Array of filenames on success, otherwise false.
      */
-    function ftp_nlist ($directory)
+    function ftp_nlist($directory)
     {
-        return @ftp_nlist ($this->_resource, $directory);
+        return @ftp_nlist($this->_resource, $directory);
     }
 
     // }}}
@@ -499,12 +496,11 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Turns passive mode on or off.
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
-     * @since 0.1
      * @param bool $pasv True to turn on pasv mode, false to turn off.
+     *
+     * @since 0.1
      * @access public
      * @return @bool True on success, otherwise false.
      */
@@ -518,10 +514,8 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Returns the current directory name.
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
      * @since 0.1
      * @access public
      * @return @mixed String the current directory or false on error.
@@ -530,16 +524,14 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
     {
         return @ftp_pwd($this->_resource);
     }
-    
+
     // }}}
     // {{{ ftp_quit()
-    
+
     /**
      * Closes an FTP connection (alias to ftp_close).
      * This is one of the functions provided by extFTP, which must not be implemented by a driver since it's an alias to ftp_close('..').
-     * 
      *
-	 *
      * @since 0.1
      * @access public
      * @return @bool True on success, otherwise false.
@@ -554,33 +546,31 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Returns a detailed list of files in the given directory.
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
+     * @param string $directory The directory to list files from.
+     *
      * @since 0.1
      * @access public
-     * @param string $directory The directory to list files from.
      * @return @mixed Array of file data on success, otherwise false.
      */
     function ftp_rawlist($directory)
     {
         return @ftp_rawlist($this->_resource, $directory);
     }
-   
+
     // }}}
     // {{{ ftp_rename()
-   
+
     /**
      * Renames a file on the FTP server.
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
+     * @param string $from The file to rename.
+     * @param string $to   The new name for the file.
+     *
      * @since 0.1
      * @access public
-     * @param string $from The file to rename.
-     * @param string $to The new name for the file.
      * @return @bool True on success, otherwise false.
      */
     function ftp_rename($from, $to)
@@ -593,51 +583,48 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
 
     /**
      * Removes a directory.
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
+     * @param string $directory The directory to remove.
+     *
      * @since 0.1
      * @access public
-     * @param string $directory The directory to remove.
      * @return @bool True on success, otherwise false.
      */
     function ftp_rmdir($directory)
     {
         return @ftp_rmdir($this->_resource, $directory);
     }
-    
+
     // }}}
     // {{{ ftp_site()
-    
+
     /**
      * Sends a SITE command to the server.
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
+     * @param string $cmd The command to send.
+     *
      * @since 0.1
      * @access public
-     * @param string $cmd The command to send.
      * @return @bool True on success, otherwise false.
      */
     function ftp_site($cmd)
     {
         return @ftp_site($this->_resource, $cmd);
     }
-    
+
     // }}}
     // {{{ ftp_size()
-    
+
     /**
      * Returns the size of the given file.
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
+     * @param string $remote_file File to determine the size of.
+     *
      * @since 0.1
      * @access public
-     * @param string $remote_file File to determine the size of.
      * @return @int Size of the file in byte, -1 on error.
      */
     function ftp_size($remote_file)
@@ -649,16 +636,15 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
     // {{{ ftp_ssl_connect()
 
     /**
-     * Opens an Secure SSL-FTP connection. 
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * Opens an Secure SSL-FTP connection.
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
+     * @param string $host    The host to connect to.
+     * @param int    $port    The port to connect to.
+     * @param int    $timeout Timeout for the connection to be opened.
+     *
      * @since 0.1
      * @access public
-     * @param string $host The host to connect to.
-     * @param int $port The port to connect to.
-     * @param int $timeout Timeout for the connection to be opened.
      * @return @resource The FTP resource used inside the driver object.
      */
     function &ftp_ssl_connect($host, $port = 21, $timeout = 90)
@@ -666,16 +652,14 @@ class Net_FTP2_Driver_FTP extends Net_FTP2_Driver  {
         $this->_resource = @ftp_ssl_connect($host, $port = 21, $timeout = 90);
         return @$this->_resource;
     }
-    
+
     // }}}
     // {{{ ftp_systype()
-    
+
     /**
      * Returns the system type identifier of the remote FTP server.
-     * This is one of the functions provided by extFTP, which should be implemented by a driver. 
-     * 
+     * This is one of the functions provided by extFTP, which should be implemented by a driver.
      *
-	 *
      * @since 0.1
      * @access public
      * @return @mixed String, the remote system type, or false on error.
