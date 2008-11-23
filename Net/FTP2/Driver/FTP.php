@@ -26,7 +26,7 @@
  * @since      File available since Release 0.0.1
  */
 
-require_once 'Net/FTP2/Driver.php'
+require_once 'Net/FTP2/Driver.php';
 
 /**
  * Net_FTP2 driver class for use of extFTP.
